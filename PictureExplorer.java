@@ -800,7 +800,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
    */
   public static void main( String args[])
   {
-    Picture pix = new Picture("beach.jpg");
+    Picture pix = new Picture("/Users/annelisehammer/git/u4picturelab-annelisehammer/images/CumberlandIsland.jpg");
     pix.explore();
   }
   

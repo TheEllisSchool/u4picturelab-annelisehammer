@@ -86,7 +86,7 @@ public class Picture extends SimplePicture
   }
   
   /** Method to set the blue to 0 */
-  public void zeroBlue()
+  //public void zeroBlue()
   {
     Pixel[][] pixels = this.getPixels2D();
     for (Pixel[] rowArray : pixels)
@@ -96,7 +96,68 @@ public class Picture extends SimplePicture
         pixelObj.setBlue(0);
       }
     }
+  }//*
+  /** Method to set the red to 0*/
+  public void zeroBlue()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(0);
+      }
+    }
+    Pixel[][] pixels1 = this.getPixels2D();
+    for (Pixel[] rowArray : pixels1)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(0);
+      }
+    }
   }
+  
+  public void negate() {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+	    {
+	      for (Pixel pixelObj : rowArray)
+	      {
+	    	 int redNumber = (pixelObj.getRed());
+	    	 int negateRed= redNumber-255;
+	    	 pixelObj.setRed(negateRed);
+	    	 
+	    	 int blueNumber = (pixelObj.getBlue()-255);
+	    	 int negateBlue= redNumber-255;
+	    	 pixelObj.setBlue(negateBlue);
+	    	 
+	    	 int greenNumber = (pixelObj.getGreen()-255);
+	    	 int negateGreen= redNumber-255;
+	    	 pixelObj.setGreen(negateGreen);
+
+	      }
+	      
+	    } 
+  }
+  
+  public void grayScale() {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels) {
+	      for (Pixel pixelObj : rowArray) {
+	    	  int added = (pixelObj.getRed()+ pixelObj.getBlue()+ pixelObj.getGreen());
+	    	  int eachColor= added / 3;
+	    	  pixelObj.setRed(eachColor);
+	    	  pixelObj.setBlue(eachColor);
+	    	  pixelObj.setGreen(eachColor);
+	    	  
+	      }
+
+	  }
+
+  }
+  
+  
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
@@ -223,10 +284,11 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("/Users/annelisehammer/git/u4picturelab-annelisehammer/images/beach.jpg");
     beach.explore();
-    beach.zeroBlue();
+    beach.negate();
     beach.explore();
+    
   }
   
 } // this } is the end of class Picture, put all new methods before this
